@@ -4,6 +4,7 @@ using HotelManagement.Domain.Data;
 using HotelManagement.Domain.Entities;
 using HotelManagement.Domain.Enums;
 using MediatR;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -46,7 +47,10 @@ namespace HotelManagement.Application.Features.Rooms.Commands
                     Price = request.Price,
                     Available = request.Available,
                     Description = request.Description,
-                    MaximumGuests = request.MaximumGuests
+                    MaximumGuests = request.MaximumGuests,
+                    CreatedAt = DateTime.Now,
+                    LastModifiedAt = DateTime.Now
+
                 };
                 await _context.Rooms.AddAsync(room);
                 await _context.SaveChangesAsync();

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HotelManagement.Application.DTO.Booking.Request
+namespace HotelManagement.Application.DTO.Bookings.Request
 {
     public class BookingRequestModel
     {
@@ -12,6 +8,7 @@ namespace HotelManagement.Application.DTO.Booking.Request
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
         public int NumberOfGuests { get; set; }
+        public string OtherRequests { get; set; }
 
     }
 }

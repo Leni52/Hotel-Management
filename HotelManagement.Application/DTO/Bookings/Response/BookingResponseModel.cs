@@ -13,5 +13,6 @@ namespace HotelManagement.Application.DTO.Booking.Response
         public DateTime CheckOut { get; set; }
         public int NumberOfGuests { get; set; }
         public float TotalFee { get; set; }
+        public string OtherRequests { get; set; }
     }
 }

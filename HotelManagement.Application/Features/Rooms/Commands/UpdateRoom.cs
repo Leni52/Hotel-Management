@@ -5,9 +5,7 @@ using HotelManagement.Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -57,8 +55,8 @@ namespace HotelManagement.Application.Features.Rooms.Commands
                 roomToUpdate.Description = command.Description;
                 roomToUpdate.MaximumGuests = command.MaximumGuests;
                 roomToUpdate.Number = command.Number;
-
                 roomToUpdate.LastModifiedAt = DateTime.Now;
+
                 await _context.SaveChangesAsync();
                 var roomResponse = _mapper.Map<RoomResponseModel>(roomToUpdate);
                 return roomResponse;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace HotelManagement.Domain.Entities
         public DateTime CheckOut { get; set; }
         public int NumberOfGuests { get; set; }
         public float TotalFee { get; set; }
+        [MaxLength(150)]
+        public string OtherRequests { get; set; }
 
     }
 }

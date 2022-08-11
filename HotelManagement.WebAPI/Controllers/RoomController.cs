@@ -26,7 +26,7 @@ namespace HotelManagement.WebAPI.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
 
-        public async Task<ActionResult<IEnumerable<RoomResponseModel>>> GetAllArticles()
+        public async Task<ActionResult<IEnumerable<RoomResponseModel>>> GetAllRooms()
         {
             var query = new GetAllRooms();
             var result = await _mediator.Send(query);
