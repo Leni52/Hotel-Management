@@ -15,7 +15,7 @@ namespace HotelManagement.WebAPI.Controllers
     [ApiController]
     public class BookingController : ControllerBase
     {
-        private IMediator _mediator;
+        private readonly IMediator _mediator;
         public BookingController(IMediator mediator)
         {
             _mediator = mediator;
@@ -72,7 +72,7 @@ namespace HotelManagement.WebAPI.Controllers
         [HttpPut("bookingId")]
         [ProducesResponseType(403)]
         [ProducesResponseType(200)]
-        public async Task<IActionResult> UpdateArticle(Guid bookingId, Guid roomId, BookingRequestModel request)
+        public async Task<IActionResult> UpdateBooking(Guid bookingId, Guid roomId, BookingRequestModel request)
         {
             if (!ModelState.IsValid)
             {

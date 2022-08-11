@@ -1,7 +1,7 @@
-﻿using HotelManagement.Application.DTO.Room.Response;
-using HotelManagement.Application.DTO.Rooms.Request;
-using HotelManagement.Application.Features.Rooms.Commands;
-using HotelManagement.Application.Features.Rooms.Queries;
+﻿using HotelManagement.Application.DTO.Review.Response;
+using HotelManagement.Application.DTO.Reviews.Request;
+using HotelManagement.Application.Features.Reviews.Commands;
+using HotelManagement.Application.Features.Reviews.Queries;
 using HotelManagement.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -14,10 +14,10 @@ namespace HotelManagement.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoomController : ControllerBase
+    public class ReviewController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public RoomController(IMediator mediator)
+        public ReviewController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -26,72 +26,65 @@ namespace HotelManagement.WebAPI.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
 
-        public async Task<ActionResult<IEnumerable<RoomResponseModel>>> GetAllRooms()
+        public async Task<ActionResult<IEnumerable<ReviewResponseModel>>> GetAllReviews()
         {
-            var query = new GetAllRooms();
+            var query = new GetAllReviews();
             var result = await _mediator.Send(query);
             return Ok(result);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Room>> CreateRoom(RoomRequestModel request)
+        public async Task<ActionResult<Review>> CreateRoom(ReviewRequestModel request)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            var command = new CreateRoom(request.Number,
-                request.RoomType,
-                request.Price,
-                 request.Available,
-                request.Description,
-                request.MaximumGuests);
+            var command = new CreateReview(request.Content,
+                request.Title,
+                request.RoomId);
+
             var result = await _mediator.Send(command);
             return Ok(result);
         }
 
 
-        [HttpGet("{roomId:guid}")]
+        [HttpGet("{reviewId:guid}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<RoomResponseModel>> GetById(Guid roomId)
+        public async Task<ActionResult<ReviewResponseModel>> GetById(Guid reviewId)
         {
 
-            var query = new GetRoomById(roomId);
+            var query = new GetReviewById(reviewId);
             var result = await _mediator.Send(query);
             return Ok(result);
         }
 
-        [HttpDelete("{roomId}")]
+        [HttpDelete("{reviewId}")]
         [ProducesResponseType(204)]
-        public async Task<ActionResult> DeleteRoom(Guid roomId)
+        public async Task<ActionResult> DeleteReview(Guid reviewId)
         {
-            var command = new DeleteRoomById(roomId);
+            var command = new DeleteReviewById(reviewId);
             await _mediator.Send(command);
             return NoContent();
         }
         [HttpPut("roomId")]
         [ProducesResponseType(403)]
         [ProducesResponseType(200)]
-        public async Task<IActionResult> UpdateRoom(Guid roomId, RoomRequestModel request)
+        public async Task<IActionResult> UpdateReview(Guid reviewId, ReviewRequestModel request)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            var command = new UpdateRoom(
-                roomId,
-                request.Number,
-                request.RoomType,
-                request.Price,
-                request.Available,
-                request.Description,
-                request.MaximumGuests
+            var command = new UpdateReview(
+                request.Content,
+                request.Title,
+                reviewId
                 );
             var result = await _mediator.Send(command);
             return Ok(result);
         }
     }
-
-
 }
+
