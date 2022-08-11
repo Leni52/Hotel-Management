@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="Features\Review\Commands\" />
     <Folder Include="Features\Review\Queries\" />
-    <Folder Include="Features\Room\Commands\" />
   </ItemGroup>
 
   <ItemGroup>

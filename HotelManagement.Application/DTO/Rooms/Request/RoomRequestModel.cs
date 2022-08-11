@@ -1,11 +1,6 @@
 ﻿using HotelManagement.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HotelManagement.Application.DTO.Room.Request
+namespace HotelManagement.Application.DTO.Rooms.Request
 {
     public class RoomRequestModel
     {

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MediatR;
 
-using static HotelManagement.Application.Features.Room.Queries.GetAllRooms;
+using static HotelManagement.Application.Features.Rooms.Queries.GetAllRooms;
 
 namespace HotelManagement.WebAPI
 {

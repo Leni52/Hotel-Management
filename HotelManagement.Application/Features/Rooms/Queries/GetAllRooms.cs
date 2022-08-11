@@ -3,14 +3,12 @@ using HotelManagement.Application.DTO.Room.Response;
 using HotelManagement.Domain.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HotelManagement.Application.Features.Room.Queries
+namespace HotelManagement.Application.Features.Rooms.Queries
 {
     public class GetAllRooms : IRequest<IEnumerable<RoomResponseModel>>
     {
