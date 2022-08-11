@@ -34,8 +34,11 @@ namespace HotelManagement.WebAPI
             services.AddAutoMapper(typeof(Startup));
 
             //dbcontext and sqlserver
-            services.AddDbContext<HotelDbContext>(
-                options => options.UseSqlServer(Configuration["ConnectionStrings:Default"]));
+
+
+            services.AddDbContext<HotelDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+
 
             //register queries and handlers
             services.AddMediatR(typeof(GetAllRoomsHandler));
