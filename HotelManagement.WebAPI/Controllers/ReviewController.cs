@@ -68,10 +68,10 @@ namespace HotelManagement.WebAPI.Controllers
             await _mediator.Send(command);
             return NoContent();
         }
-        [HttpPut("roomId")]
+        [HttpPut("reviewId")]
         [ProducesResponseType(403)]
         [ProducesResponseType(200)]
-        public async Task<IActionResult> UpdateReview(Guid reviewId, ReviewRequestModel request)
+        public async Task<IActionResult> UpdateReview(Guid reviewId, ReviewRequestUpdateModel request)
         {
             if (!ModelState.IsValid)
             {
