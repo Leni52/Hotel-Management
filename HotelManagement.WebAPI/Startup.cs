@@ -43,6 +43,14 @@ namespace HotelManagement.WebAPI
             //register queries and handlers
             services.AddMediatR(typeof(GetAllRoomsHandler));
 
+            //add CORS
+            services.AddCors((setup) =>
+            {
+                setup.AddPolicy("default", (options) =>
+                {
+                    options.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                });
+            });
 
         }
 
@@ -55,7 +63,7 @@ namespace HotelManagement.WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelManagement.WebAPI v1"));
             }
-
+            app.UseCors("default");
             app.UseHttpsRedirection();
 
             app.UseRouting();

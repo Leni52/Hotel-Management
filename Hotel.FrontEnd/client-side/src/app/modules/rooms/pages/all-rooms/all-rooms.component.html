@@ -1,0 +1,33 @@
+<div class="container">
+    <br />
+  
+    <div class="row">
+      <div class="col">
+        <h3>All available rooms:</h3>
+      </div>
+      <div class="col text-right">
+        <a routerLink="/events/create" class="btn btn-success btn-sm">Create New Event</a>
+      </div>
+      <br />
+    </div>
+    <br />
+  
+    <div *ngFor="let room of allRooms" class="wrapper-room">
+      <div class="room-card">
+  
+        <mat-card>
+          <mat-card-header>{{roomTypes[room.roomType]}}</mat-card-header>
+          <mat-card-title>{{room.available }} </mat-card-title>
+  
+          
+          <mat-card-content>{{room.description}}</mat-card-content>
+          <mat-card-content>{{room.price}}</mat-card-content>
+          <mat-card-actions>
+         
+            
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  
+  </div>
