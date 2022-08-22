@@ -15,17 +15,15 @@ namespace HotelManagement.Application.Features.Bookings.Commands
     public class UpdateBooking : IRequest<BookingResponseModel>
     {
         public Guid BookingId { get; }
-        public Guid RoomId { get; set; }
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
         public int NumberOfGuests { get; set; }
         public int TotalFee { get; set; }
         public string OtherRequests { get; set; }
 
-        public UpdateBooking(Guid bookingId, Guid roomId, DateTime checkIn, DateTime checkOut, int numberOfGuests, int totalFee, string otherRequests)
+        public UpdateBooking(Guid bookingId, DateTime checkIn, DateTime checkOut, int numberOfGuests, int totalFee, string otherRequests)
         {
             BookingId = bookingId;
-            RoomId = roomId;
             CheckIn = checkIn;
             CheckOut = checkOut;
             NumberOfGuests = numberOfGuests;
@@ -33,10 +31,9 @@ namespace HotelManagement.Application.Features.Bookings.Commands
             OtherRequests = otherRequests;
         }
 
-        public UpdateBooking(Guid bookingId, Guid roomId, DateTime checkIn, DateTime checkOut, int numberOfGuests, string otherRequests)
+        public UpdateBooking(Guid bookingId, DateTime checkIn, DateTime checkOut, int numberOfGuests, string otherRequests)
         {
             BookingId = bookingId;
-            RoomId = roomId;
             CheckIn = checkIn;
             CheckOut = checkOut;
             NumberOfGuests = numberOfGuests;
@@ -61,7 +58,6 @@ namespace HotelManagement.Application.Features.Bookings.Commands
                 {
 
                 }
-                bookingToUpdate.RoomId = command.RoomId;
                 bookingToUpdate.CheckIn = command.CheckIn;
                 bookingToUpdate.CheckOut = command.CheckOut;
                 bookingToUpdate.NumberOfGuests = command.NumberOfGuests;

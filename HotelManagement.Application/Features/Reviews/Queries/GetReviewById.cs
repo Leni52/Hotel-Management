@@ -19,12 +19,12 @@ namespace HotelManagement.Application.Features.Reviews.Queries
             ReviewId = reviewId;
         }
 
-        public class GetRoomByIdHandler : IRequestHandler<GetReviewById, ReviewResponseModel>
+        public class GetReviewByIdHandler : IRequestHandler<GetReviewById, ReviewResponseModel>
         {
             private readonly HotelDbContext _context;
             private readonly IMapper _mapper;
 
-            public GetRoomByIdHandler(HotelDbContext context, IMapper mapper)
+            public GetReviewByIdHandler(HotelDbContext context, IMapper mapper)
             {
                 _context = context;
                 _mapper = mapper;

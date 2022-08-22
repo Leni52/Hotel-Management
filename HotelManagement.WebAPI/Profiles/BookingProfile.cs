@@ -13,6 +13,8 @@ namespace HotelManagement.WebAPI.Profiles
                 .ReverseMap();
             CreateMap<Booking, BookingResponseModel>()
                 .ReverseMap();
+            CreateMap<Booking, BookingRequestModelUpdate>()
+               .ReverseMap();
         }
     }
 }

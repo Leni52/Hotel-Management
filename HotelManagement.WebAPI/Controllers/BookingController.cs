@@ -31,7 +31,16 @@ namespace HotelManagement.WebAPI.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+        [HttpGet("booking/{roomId:guid}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
 
+        public async Task<ActionResult<IEnumerable<BookingResponseModel>>> GetAllBookingsForRoom(Guid roomId)
+        {
+            var query = new GetAllBookingsForRoom(roomId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
         [HttpPost]
         public async Task<ActionResult<Booking>> CreateRoom(BookingRequestModel request)
         {
@@ -72,7 +81,7 @@ namespace HotelManagement.WebAPI.Controllers
         [HttpPut("bookingId")]
         [ProducesResponseType(403)]
         [ProducesResponseType(200)]
-        public async Task<IActionResult> UpdateBooking(Guid bookingId, Guid roomId, BookingRequestModel request)
+        public async Task<IActionResult> UpdateBooking(Guid bookingId, BookingRequestModelUpdate request)
         {
             if (!ModelState.IsValid)
             {
@@ -80,7 +89,6 @@ namespace HotelManagement.WebAPI.Controllers
             }
             var command = new UpdateBooking(
                 bookingId,
-                roomId,
                 request.CheckIn,
                 request.CheckOut,
                 request.NumberOfGuests,

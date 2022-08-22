@@ -6,7 +6,7 @@
         <h3>All available rooms:</h3>
       </div>
       <div class="col text-right">
-        <a routerLink="/events/create" class="btn btn-success btn-sm">Create New Event</a>
+        <a routerLink="/rooms/create" class="btn btn-success btn-sm">Add a new room</a>
       </div>
       <br />
     </div>
@@ -23,8 +23,8 @@
           <mat-card-content>{{room.description}}</mat-card-content>
           <mat-card-content>{{room.price}}</mat-card-content>
           <mat-card-actions>
-         
-            
+         <a [routerLink]="['/rooms/'+ room.id+ '/edit']">Update room</a>
+          <a [routerLink]="['/rooms/'+ room.id+ '/reviews']"> View reviews</a>  
           </mat-card-actions>
         </mat-card>
       </div>
