@@ -5,9 +5,9 @@ import { CreateBookingComponent } from '../../pages/create-booking/create-bookin
 import { EditBookingComponent } from '../../pages/edit-booking/edit-booking.component';
 
 const routes: Routes = [
-  {path: 'bookings', component: AllBookingsComponent},
-  {path: 'bookings/create', component: CreateBookingComponent},
-  {path: 'bookings/:id/edit', component: EditBookingComponent}
+  {path: 'rooms/:roomId/bookings', component: AllBookingsComponent},
+  {path: 'rooms/:roomId/bookings/create', component: CreateBookingComponent},
+  {path: 'rooms/:roomId/bookings/:id/edit', component: EditBookingComponent}
 ];
 
 

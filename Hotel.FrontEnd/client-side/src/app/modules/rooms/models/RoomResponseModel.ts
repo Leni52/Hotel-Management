@@ -1,7 +1,7 @@
 import { RoomType } from "./enums/RoomType";
 
 export interface RoomResponseModel{
-    id:number;
+    id:string;
     number: number;
     roomType: RoomType;
     price: number; 

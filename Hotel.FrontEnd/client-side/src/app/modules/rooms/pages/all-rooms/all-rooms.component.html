@@ -23,11 +23,17 @@
           <mat-card-content>{{room.description}}</mat-card-content>
           <mat-card-content>{{room.price}}</mat-card-content>
           <mat-card-actions>
-         <a [routerLink]="['/rooms/'+ room.id+ '/edit']">Update room</a>
+         <a [routerLink]="['/rooms/'+ room.id+'/edit']">Update room</a>
+         <a [routerLink]="['/booking/booking/'+ room.id]"> View all bookings</a>
           <a [routerLink]="['/rooms/'+ room.id+ '/reviews']"> View reviews</a>  
-          </mat-card-actions>
+         
+          <button mat-raised-button type="button" (click)="openDialog(room.id)" class="btn btn-danger btn-sm">
+            Delete
+          </button>
+        
+        </mat-card-actions>
         </mat-card>
       </div>
     </div>
-  
+   
   </div>
