@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ExceptionHandling.Exceptions;
 using HotelManagement.Application.DTO.Room.Response;
 using HotelManagement.Domain.Data;
 using MediatR;
@@ -33,7 +34,7 @@ namespace HotelManagement.Application.Features.Rooms.Queries
                 var room = _context.Rooms.Where(r => r.Id == request.RoomId).FirstOrDefault();
                 if (room == null)
                 {
-
+                    throw new ItemDoesNotExistException();
                 }
                 var roomResponse = _mapper.Map<RoomResponseModel>(room);
                 return roomResponse;

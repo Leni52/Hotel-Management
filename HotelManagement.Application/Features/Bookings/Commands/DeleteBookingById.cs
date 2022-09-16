@@ -1,4 +1,5 @@
-﻿using HotelManagement.Domain.Data;
+﻿using ExceptionHandling.Exceptions;
+using HotelManagement.Domain.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,7 +30,7 @@ namespace HotelManagement.Application.Features.Bookings.Commands
                 var booking = await _context.Bookings.Where(booking => booking.Id == request.BookingId).FirstOrDefaultAsync();
                 if (booking == null)
                 {
-
+                    throw new ItemDoesNotExistException();
                 }
                 _context.Bookings.Remove(booking);
                 await _context.SaveChangesAsync();
