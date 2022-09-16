@@ -13,22 +13,27 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.Application.Features.Reviews.Queries
 {
-    public class GetAllReviews : IRequest<IEnumerable<ReviewResponseModel>>
+    public class GetAllReviewsForRoom : IRequest<IEnumerable<ReviewResponseModel>>
     {
-        public class GetAllReviewsHandler : IRequestHandler<GetAllReviews, IEnumerable<ReviewResponseModel>>
+        public Guid RoomId { get; }
+        public GetAllReviewsForRoom(Guid roomId)
+        {
+            RoomId = roomId;
+        }
+        public class GetAllReviewsForRoomHandler : IRequestHandler<GetAllReviewsForRoom, IEnumerable<ReviewResponseModel>>
         {
             private readonly HotelDbContext _context;
             private readonly IMapper _mapper;
-
-            public GetAllReviewsHandler(HotelDbContext context, IMapper mapper)
+            public GetAllReviewsForRoomHandler(HotelDbContext context, IMapper mapper)
             {
                 _context = context;
                 _mapper = mapper;
             }
 
-            public async Task<IEnumerable<ReviewResponseModel>> Handle(GetAllReviews request, CancellationToken cancellationToken)
+
+            public async Task<IEnumerable<ReviewResponseModel>> Handle(GetAllReviewsForRoom request, CancellationToken cancellationToken)
             {
-                var reviewsList = await _context.Reviews.ToListAsync();
+                var reviewsList = await _context.Reviews.Where(r => r.RoomId == request.RoomId).ToListAsync();
                 var reviewsResponse = _mapper.Map<IEnumerable<ReviewResponseModel>>(reviewsList);
                 if (!reviewsResponse.Any())
                 {

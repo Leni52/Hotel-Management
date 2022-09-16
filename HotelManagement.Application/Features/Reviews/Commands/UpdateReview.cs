@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ExceptionHandling.Exceptions;
 using HotelManagement.Application.DTO.Review.Response;
 using HotelManagement.Domain.Data;
 using MediatR;
@@ -39,7 +40,7 @@ namespace HotelManagement.Application.Features.Reviews.Commands
                 var reviewToUpdate = await _context.Reviews.Where(r => r.Id == command.ReviewId).FirstOrDefaultAsync();
                 if (reviewToUpdate == null)
                 {
-
+                    throw new ItemDoesNotExistException();
                 }
                 reviewToUpdate.Title = command.Title;
                 reviewToUpdate.Content = command.Content;

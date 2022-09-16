@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ExceptionHandling.Exceptions;
 using HotelManagement.Application.DTO.Room.Response;
 using HotelManagement.Domain.Data;
 using HotelManagement.Domain.Enums;
@@ -48,7 +49,7 @@ namespace HotelManagement.Application.Features.Rooms.Commands
                 var roomToUpdate = await _context.Rooms.Where(r => r.Id == command.RoomId).FirstOrDefaultAsync();
                 if (roomToUpdate == null)
                 {
-
+                    throw new ItemDoesNotExistException();
                 }
                 roomToUpdate.Price = command.Price;
                 roomToUpdate.Available = command.Available;

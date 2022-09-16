@@ -1,4 +1,5 @@
-﻿using HotelManagement.Domain.Data;
+﻿using ExceptionHandling.Exceptions;
+using HotelManagement.Domain.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,7 +30,7 @@ namespace HotelManagement.Application.Features.Reviews.Commands
                 var review = await _context.Reviews.Where(room => room.Id == request.ReviewId).FirstOrDefaultAsync();
                 if (review == null)
                 {
-
+                    throw new ItemDoesNotExistException();
                 }
                 _context.Reviews.Remove(review);
                 await _context.SaveChangesAsync();

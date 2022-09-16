@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ExceptionHandling\ExceptionHandling.csproj" />
     <ProjectReference Include="..\HotelManagement.Domain\HotelManagement.Domain.csproj" />
   </ItemGroup>
 
