@@ -1,7 +1,7 @@
-import * as roomService from '../services/roomService';
+import * as bookService from '../services/bookService';
 import { useNavigate } from "react-router-dom";
 
-const Addroom=()=>{
+const AddBooking=()=>{
     const navigate = useNavigate();
 const onSubmitHandler=(e)=>{
 
@@ -9,12 +9,12 @@ const onSubmitHandler=(e)=>{
     e.preventDefault();
     let formData =new FormData(e.currentTarget);
    
-let { number, maximumGuests, price, description } = Object.fromEntries(formData);
+let { RoomId, checkIn, checkOut, numberOfGuests,OtherRequests } = Object.fromEntries(formData);
 
-roomService.addRoom(number, maximumGuests, price, description)
+roomService.addRoom(RoomId, checkIn, checkOut, numberOfGuests,OtherRequests)
  .then(navigate("/"));
 
-   console.log(number, maximumGuests, price, description);
+   console.log(RoomId, checkIn, checkOut, numberOfGuests,OtherRequests);
 }
 
 
@@ -27,19 +27,19 @@ roomService.addRoom(number, maximumGuests, price, description)
                  <form id="request" className="main_form" onSubmit={onSubmitHandler}>
                     <div className="row">
                        <div className="col-md-12 ">
-                          <input className="contactus" placeholder="Room Number" type="number" name="number"/> 
+                          <input className="contactus" placeholder="Room Id" type="number" name="RoomId"/> 
                        </div>
                        <div className="col-md-12">
-                          <input className="contactus" placeholder="Maximum Guests" type="number" name="maximumGuests"/> 
+                          <input className="contactus" placeholder="Check In" type="date" name="checkIn"/> 
                        </div>
                        <div className="col-md-12">
-                          <input className="contactus" placeholder="Price" type="number" name="price"/>                          
+                          <input className="contactus" placeholder="Check Out" type="number" name="checkOut"/>                          
                        </div>
                        <div className="col-md-12">
-                          <textarea className="textarea" placeholder="Description" type="text" name="description" defaultValue={"Add a description"}></textarea>
+                          <textarea className="textarea" placeholder="Number of Guests" type="number" name="NumberOfGuests" defaultValue={"Add a description"}></textarea>
                        </div>
                        <div className="col-md-12">
-                          <button className="send_btn">Add</button>
+                          <button className="send_btn">Book</button>
                        </div>
                     </div>
                  </form>

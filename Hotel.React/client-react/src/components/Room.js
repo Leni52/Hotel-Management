@@ -1,4 +1,4 @@
-import * as bookService from '../services/bookService';
+import * as bookService from '../services/roomService';
 import { useState, useEffect } from 'react';
 
 

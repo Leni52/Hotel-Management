@@ -1,4 +1,4 @@
-import * as bookService from '../services/bookService';
+import * as bookService from '../services/roomService';
 import { useState, useEffect } from 'react';
 import Room from '../components/Room';
 
@@ -25,13 +25,10 @@ const RoomCatalog = () => {
             </div>
             <div className="row">
               
-              {rooms.map(x=><Room key={x.id} id={x.id}></Room>)}
-             
-             
-              
-              
-             
-                  </div>
+              {rooms.map(x=><Room key={x.id} id={x.id}></Room>)}         
+                         
+                          
+                 </div>
                </div>
             </div>
       
