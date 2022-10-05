@@ -1,0 +1,39 @@
+<div class="container">
+    <br />
+  
+    <div class="row">
+      <div class="col">
+        <h3>All available rooms:</h3>
+      </div>
+      <div class="col text-right">
+        <a routerLink="/rooms/create" class="btn btn-success btn-sm">Add a new room</a>
+      </div>
+      <br />
+    </div>
+    <br />
+  
+    <div *ngFor="let room of allRooms" class="wrapper-room">
+      <div class="room-card">
+  
+        <mat-card>
+          <mat-card-header>{{roomTypes[room.roomType]}}</mat-card-header>
+          <mat-card-title>{{room.available }} </mat-card-title>
+  
+          
+          <mat-card-content>{{room.description}}</mat-card-content>
+          <mat-card-content>{{room.price}}</mat-card-content>
+          <mat-card-actions>
+         <a [routerLink]="['/rooms/'+ room.id+'/edit']">Update room</a>
+         <a [routerLink]="['/booking/booking/'+ room.id]"> View all bookings</a>
+          <a [routerLink]="['/rooms/'+ room.id+ '/reviews']"> View reviews</a>  
+         
+          <button mat-raised-button type="button" (click)="openDialog(room.id)" class="btn btn-danger btn-sm">
+            Delete
+          </button>
+        
+        </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+   
+  </div>

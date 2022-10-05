@@ -44,6 +44,14 @@ namespace HotelManagement.WebAPI
             //register queries and handlers
             services.AddMediatR(typeof(GetAllRoomsHandler));
 
+            //add CORS
+            services.AddCors((setup) =>
+            {
+                setup.AddPolicy("default", (options) =>
+                {
+                    options.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                });
+            });
 
         }
 

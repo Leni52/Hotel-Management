@@ -33,6 +33,17 @@ namespace HotelManagement.WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("Room/{roomId:guid}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+
+        public async Task<ActionResult<IEnumerable<ReviewResponseModel>>> GetAllReviewsForRoom(Guid roomId)
+        {
+            var query = new GetAllReviewsForRoom(roomId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<ActionResult<Review>> CreateRoom(ReviewRequestModel request)
         {

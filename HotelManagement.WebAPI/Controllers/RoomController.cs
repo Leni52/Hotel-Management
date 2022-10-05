@@ -51,7 +51,7 @@ namespace HotelManagement.WebAPI.Controllers
         }
 
 
-        [HttpGet("{roomId:guid}")]
+        [HttpGet("{roomId}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         public async Task<ActionResult<RoomResponseModel>> GetById(Guid roomId)
@@ -70,7 +70,7 @@ namespace HotelManagement.WebAPI.Controllers
             await _mediator.Send(command);
             return NoContent();
         }
-        [HttpPut("roomId")]
+        [HttpPut("{roomId}")]
         [ProducesResponseType(403)]
         [ProducesResponseType(200)]
         public async Task<IActionResult> UpdateRoom(Guid roomId, RoomRequestModel request)
