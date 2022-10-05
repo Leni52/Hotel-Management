@@ -1,13 +1,13 @@
 const baseUrl='https://localhost:5001/api';
 
-export const fetchRooms = async ()=>{
+export const fetchBookings = async ()=>{
     const res = await fetch('https://localhost:5001/api/Booking');
     const data = await res.json();
    // console.log(data);
     return data;
 }
 
-export const roomById =async (id)=>{
+export const bookingById =async (id)=>{
     const res = await fetch(`https://localhost:5001/api/Booking/${id}`);
     const data = await res.json();
     return data;

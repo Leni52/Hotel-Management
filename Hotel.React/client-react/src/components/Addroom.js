@@ -1,7 +1,7 @@
 import * as roomService from '../services/roomService';
 import { useNavigate } from "react-router-dom";
 
-const Addroom=()=>{
+const AddRoom=()=>{
     const navigate = useNavigate();
 const onSubmitHandler=(e)=>{
 
@@ -52,4 +52,4 @@ roomService.addRoom(number, maximumGuests, price, description)
     )
 }
 
-export default Addroom;
+export default AddRoom;

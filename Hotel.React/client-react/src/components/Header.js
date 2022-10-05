@@ -29,14 +29,14 @@ return(
                               <li className="nav-item">
                                  <Link className="nav-link" to ="/addroom">Add room</Link>
                               </li>
-                              <li className="nav-item active">
+                              <li className="nav-item">
                                  <Link className="nav-link" to ="/about">About</Link>
                               </li>
                               <li className="nav-item">
-                                 <Link className="nav-link" to ="room.html">Our room</Link>
+                                 <Link className="nav-link" to ="">My bookings</Link>
                               </li>                             
                               <li className="nav-item">
-                                 <Link className="nav-link" to ="contact.html">Contact Us</Link>
+                                 <Link className="nav-link" to ="/contact">Contact Us</Link>
                               </li>
                            </ul>
                         </div>

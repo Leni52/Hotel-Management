@@ -1,4 +1,4 @@
-import * as bookService from '../services/roomService';
+import * as roomService from '../services/roomService';
 import { useState, useEffect } from 'react';
 import Room from '../components/Room';
 
@@ -6,7 +6,7 @@ const RoomCatalog = () => {
     const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
-        bookService.fetchRooms()
+        roomService.fetchRooms()
             .then(x => {
                 setRooms(x);
             })

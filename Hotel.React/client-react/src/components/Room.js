@@ -1,13 +1,14 @@
-import * as bookService from '../services/roomService';
+import * as roomService from '../services/roomService';
+import * as bookService from '../services/bookService';
 import { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 
 const Room = ({id}) => {
     const [room, setRoom] = useState([]);
 
     useEffect(() => {
    
-        bookService.roomById(id)
+        roomService.roomById(id)
       
             .then(x => {
                 setRoom(x);
@@ -23,6 +24,7 @@ const Room = ({id}) => {
                      <div className="bed_room">
                         <h3>Bed Room</h3>
                         <p>{room.description} </p>
+                       <Link to={`/addbooking/${id}`}> Book this room</Link>                      
                      </div>
                   </div>
                </div>

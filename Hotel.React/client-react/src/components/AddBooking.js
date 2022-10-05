@@ -1,55 +1,66 @@
 import * as bookService from '../services/bookService';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useMatch } from "react-router-dom";
 
-const AddBooking=()=>{
-    const navigate = useNavigate();
-const onSubmitHandler=(e)=>{
+const AddBooking = (props) => {
+   const navigate = useNavigate();
+   const match = useMatch("/addbooking/:id");
+
+   const onSubmitHandler = (e) => {
 
 
-    e.preventDefault();
-    let formData =new FormData(e.currentTarget);
-   
-let { RoomId, checkIn, checkOut, numberOfGuests,OtherRequests } = Object.fromEntries(formData);
+      e.preventDefault();
+      let formData = new FormData(e.currentTarget);
 
-roomService.addRoom(RoomId, checkIn, checkOut, numberOfGuests,OtherRequests)
- .then(navigate("/"));
+      let { checkIn, checkOut, numberOfGuests, otherRequests } = Object.fromEntries(formData);
 
-   console.log(RoomId, checkIn, checkOut, numberOfGuests,OtherRequests);
+      const roomId = match.params.id;
+
+      bookService.addBooking(roomId, checkIn, checkOut, numberOfGuests, otherRequests)
+         .then(navigate("/"));
+
+
+     // console.log(id);
+      //  console.log(RoomId, checkIn, checkOut, numberOfGuests,OtherRequests);
+   }
+
+
+   return (
+
+      <div className="contact">
+         <div className="container">
+            <div className="row">
+               <div className="col-md-6">
+                  <form id="request" className="main_form" onSubmit={onSubmitHandler}>
+                     <div className="row">
+
+                        <div className="col-md-12">
+                           <label>Check in date:</label>
+                           <input className="contactus" placeholder="Check In" type="date" name="checkIn" />
+                        </div>
+                        <div className="col-md-12">
+                        <label>Check out date:</label>
+                           <input className="contactus" placeholder="Check Out" type="date" name="checkOut" />
+                        </div>
+                        <div className="col-md-12">
+                        <label>Number of guests</label>
+                           <input className="contactus" placeholder="Number of Guests" type="number" name="numberOfGuests" />
+                        </div>
+                        <div className="col-md-12">
+                        <label>Other Requests:</label>
+                           <textarea className="textarea" placeholder="Other Requests" type="text" name="otherRequests" defaultValue={""}></textarea>
+                        </div>
+                        <div className="col-md-12">
+                           <button className="send_btn">Book</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+
+            </div>
+         </div>
+      </div>
+
+   )
 }
 
-
-    return(
-
-        <div className="contact">
-        <div className="container">
-           <div className="row">
-              <div className="col-md-6">
-                 <form id="request" className="main_form" onSubmit={onSubmitHandler}>
-                    <div className="row">
-                       <div className="col-md-12 ">
-                          <input className="contactus" placeholder="Room Id" type="number" name="RoomId"/> 
-                       </div>
-                       <div className="col-md-12">
-                          <input className="contactus" placeholder="Check In" type="date" name="checkIn"/> 
-                       </div>
-                       <div className="col-md-12">
-                          <input className="contactus" placeholder="Check Out" type="number" name="checkOut"/>                          
-                       </div>
-                       <div className="col-md-12">
-                          <textarea className="textarea" placeholder="Number of Guests" type="number" name="NumberOfGuests" defaultValue={"Add a description"}></textarea>
-                       </div>
-                       <div className="col-md-12">
-                          <button className="send_btn">Book</button>
-                       </div>
-                    </div>
-                 </form>
-              </div>
-             
-           </div>
-        </div>
-     </div>
-
-    )
-}
-
-export default Addroom;
+export default AddBooking;
