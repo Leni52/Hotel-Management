@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ExceptionHandling.Exceptions;
 using HotelManagement.Application.DTO.Booking.Response;
 using HotelManagement.Domain.Data;
 using MediatR;
@@ -36,7 +37,7 @@ namespace HotelManagement.Application.Features.Bookings.Queries
                 var bookingResponse = _mapper.Map<IEnumerable<BookingResponseModel>>(bookingsList);
                 if (!bookingResponse.Any())
                 {
-
+                    throw new ItemDoesNotExistException();
                 }
                 return bookingResponse;
             }

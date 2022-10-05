@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using MediatR;
 
 using static HotelManagement.Application.Features.Rooms.Queries.GetAllRooms;
+using ExceptionHandling.Handler;
 
 namespace HotelManagement.WebAPI
 {
@@ -63,6 +64,7 @@ namespace HotelManagement.WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelManagement.WebAPI v1"));
             }
+            app.UseExceptionHandler(new ExceptionHandlerConfig().CustomOptions);
             app.UseCors("default");
             app.UseHttpsRedirection();
 

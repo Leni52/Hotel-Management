@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ExceptionHandling.Exceptions;
 using HotelManagement.Application.DTO.Review.Response;
 using HotelManagement.Domain.Data;
 using MediatR;
@@ -36,7 +37,7 @@ namespace HotelManagement.Application.Features.Reviews.Queries
                 var reviewsResponse = _mapper.Map<IEnumerable<ReviewResponseModel>>(reviewsList);
                 if (!reviewsResponse.Any())
                 {
-
+                    throw new ItemDoesNotExistException();
                 }
                 return reviewsResponse;
             }
