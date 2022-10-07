@@ -24,7 +24,11 @@ const Room = ({id}) => {
                      <div className="bed_room">
                         <h3>Bed Room</h3>
                         <p>{room.description} </p>
-                       <Link to={`/addbooking/${id}`}> Book this room</Link>                      
+                       <Link to={`/addbooking/${id}`}>Book this room</Link> 
+                       <br/>    
+                       <Link to={`/addreview/${id}`}>Add Review</Link>    
+                       <br/>
+                       <Link to={`/reviewCatalog`}>List all reviews</Link>             
                      </div>
                   </div>
                </div>

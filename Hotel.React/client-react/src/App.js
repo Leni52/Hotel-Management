@@ -8,7 +8,8 @@ import About from '../src/components/About';
 import Footer from '../src/components/Footer';
 import AddBooking from './components/AddBooking';
 import Contact from './components/Contact';
-
+import AddReview from './components/AddReview';
+import ReviewCatalog from './components/ReviewCatalog';
 function App() {
 
 
@@ -21,7 +22,8 @@ function App() {
     <Route path='/about' element={<About></About>}></Route>
     <Route path='/addbooking/:id' element={<AddBooking></AddBooking>}></Route>
     <Route path='/contact' element={<Contact></Contact>}></Route>
-    
+    <Route path='/addreview/:id' element={<AddReview></AddReview>}></Route>
+    <Route path='/reviewCatalog/:id' element={<ReviewCatalog></ReviewCatalog>}></Route>
    </Routes>
    
 
