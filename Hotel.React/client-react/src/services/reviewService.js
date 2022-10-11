@@ -3,8 +3,7 @@ const baseUrl='https://localhost:5001/api';
 export const fetchReviews = async ()=>{
     const res = await fetch('https://localhost:5001/api/Review');
     const data = await res.json();
-   // console.log(data);
-    return data;
+     return data;
 }
 
 export const reviewById =async (id)=>{
@@ -14,9 +13,11 @@ export const reviewById =async (id)=>{
 }
 
 export const reviewsForRoom = async(id)=>{
-    const res = await fetch(`https://localhost:5001/api/Review/Room/${id}`);
-    const data = await res.json();
-    return data;
+   const res = await fetch(`https://localhost:5001/api/Review/Room/${id}`);
+   // const data = await res.json();
+   const data = await res.json();
+   console.log(data);
+       return data;
 }
 
 export const addReview = async(roomId, content, title)=>{

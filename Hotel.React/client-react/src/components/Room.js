@@ -28,7 +28,7 @@ const Room = ({id}) => {
                        <br/>    
                        <Link to={`/addreview/${id}`}>Add Review</Link>    
                        <br/>
-                       <Link to={`/reviewCatalog`}>List all reviews</Link>             
+                       <Link to={`/reviewCatalog/${id}`}>List all reviews</Link>             
                      </div>
                   </div>
                </div>
