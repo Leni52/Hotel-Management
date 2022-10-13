@@ -8,10 +8,9 @@ const ReviewCatalog = (props) => {
     const navigate = useNavigate();
    
     const match = useMatch("/reviewCatalog/:roomId");
-    
-    const z = props;
-    const roomId = match.params.roomId;
    
+    const roomId = match.params.roomId;
+  
     useEffect(() => {     
         reviewService.reviewsForRoom(roomId)
             .then(x => {
@@ -20,6 +19,7 @@ const ReviewCatalog = (props) => {
             })
     },[])
 
+    
     return (
         <div  className="our_room">
          <div className="container">
@@ -32,8 +32,8 @@ const ReviewCatalog = (props) => {
                </div>
             </div>
             <div className="row">
-               {reviews.map(x=><Review key={x.id} id={x.id}></Review>)}
-      
+              
+            {reviews.map(x=><Review key={x.id} id={x.id}></Review>)}
               
                          
                 </div>

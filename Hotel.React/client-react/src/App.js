@@ -10,11 +10,18 @@ import AddBooking from './components/AddBooking';
 import Contact from './components/Contact';
 import AddReview from './components/AddReview';
 import ReviewCatalog from './components/ReviewCatalog';
+import SecuredPage from './components/SecuredPage';
+import keycloak from './Keycloak';
+import PrivateRoute from './helpers/PrivateRoute';
+
 function App() {
 
 
   return (
     <div className="App">
+ 
+  <KeycloakProvider keycloak={keycloak}>
+   
   <Header></Header>
    <Routes>
     <Route path='/' exact element={<Home></Home>}></Route>
@@ -24,11 +31,13 @@ function App() {
     <Route path='/contact' element={<Contact></Contact>}></Route>
     <Route path='/addreview/:id' element={<AddReview></AddReview>}></Route>
     <Route path='/reviewCatalog/:roomId' element={<ReviewCatalog></ReviewCatalog>}></Route>
+   <Route path="/securedPage"  element={<PrivateRoute roles={['RealmAdmin']}><SecuredPage></SecuredPage></PrivateRoute>}></Route>
    </Routes>
-   
-
-<Footer></Footer>
-    </div>
+   <Footer></Footer>
+ 
+   </KeycloakProvider>
+  
+   </div>
   );
 }
 
