@@ -53,9 +53,9 @@ namespace HotelManagement.Application.Features.Rooms.Commands
 
                 };
                 await _context.Rooms.AddAsync(room);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();               
                 var roomResponse = _mapper.Map<RoomRequestModel>(room);
-                return roomResponse;
+               return roomResponse;
             }
 
         }

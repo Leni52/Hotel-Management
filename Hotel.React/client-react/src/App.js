@@ -13,6 +13,8 @@ import ReviewCatalog from './components/ReviewCatalog';
 import SecuredPage from './components/SecuredPage';
 import keycloak from './Keycloak';
 import PrivateRoute from './helpers/PrivateRoute';
+import { ReactKeycloakProvider } from "@react-keycloak/web";
+
 
 function App() {
 
@@ -20,7 +22,7 @@ function App() {
   return (
     <div className="App">
  
-  <KeycloakProvider keycloak={keycloak}>
+  <ReactKeycloakProvider keycloak={keycloak} authClient={"vanilla"}>
    
   <Header></Header>
    <Routes>
@@ -35,7 +37,7 @@ function App() {
    </Routes>
    <Footer></Footer>
  
-   </KeycloakProvider>
+   </ReactKeycloakProvider>
   
    </div>
   );

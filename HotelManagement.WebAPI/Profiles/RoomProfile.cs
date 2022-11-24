@@ -9,10 +9,10 @@ namespace HotelManagement.WebAPI.Profiles
     {
         public RoomProfile()
         {
-            CreateMap<Room, RoomRequestModel>()
-                .ReverseMap();
-            CreateMap<Room, RoomResponseModel>()
-                .ReverseMap();
+            CreateMap<Room, RoomRequestModel>();
+            CreateMap<Room, RoomResponseModel>();
+            CreateMap<RoomRequestModel, Room>();
+            CreateMap<RoomResponseModel, Room>();
         }
     }
 }

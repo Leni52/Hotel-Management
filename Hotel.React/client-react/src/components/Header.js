@@ -4,7 +4,7 @@ import { useKeycloak } from "@react-keycloak/web";
 
 const Header = () => {
 
-   const [keycloak, initialized] = useKeycloak();
+   const [keycloak, initialized] = useKeycloak([]);
 
    return (
       <header>
