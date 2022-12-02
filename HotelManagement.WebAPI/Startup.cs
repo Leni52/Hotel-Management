@@ -11,9 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using MediatR;
 using static HotelManagement.Application.Features.Rooms.Queries.GetAllRooms;
-using ExceptionHandling.Handler;
 using static HotelManagement.Application.Features.Rooms.Commands.CreateRoom;
 
 namespace HotelManagement.WebAPI
@@ -47,9 +45,8 @@ namespace HotelManagement.WebAPI
 
             //dbcontext and sqlserver
 
-
-         //   services.AddDbContext<HotelDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Default")));
-              services.AddDbContext<HotelDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")), ServiceLifetime.Scoped);
+        
+            services.AddDbContext<HotelDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")), ServiceLifetime.Scoped);
             services.AddScoped<HotelDbContext>();
 
             //register queries and handlers
