@@ -13,7 +13,7 @@ export const bookingById =async (id)=>{
     return data;
 }
 
-export const addBooking = async(RoomId, checkIn, checkOut, numberOfGuests,OtherRequests)=>{
+export const addBooking = async(roomId, checkIn, checkOut, numberOfGuests,otherRequests)=>{
     
         let response = await fetch(`${baseUrl}/Booking`, {
             method: 'POST',
@@ -21,7 +21,7 @@ export const addBooking = async(RoomId, checkIn, checkOut, numberOfGuests,OtherR
                 'content-type': 'application/json',
                 //'X-Authorization': token,
             },
-            body: JSON.stringify({RoomId, checkIn, checkOut, numberOfGuests,OtherRequests})
+            body: JSON.stringify({roomId, checkIn, checkOut, numberOfGuests,otherRequests})
         });
      
         let result = await response.json();

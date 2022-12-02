@@ -1,4 +1,9 @@
+using AutoMapper;
+using ExceptionHandling.Handler;
+using HotelManagement.Application.Features.Rooms.Commands;
 using HotelManagement.Domain.Data;
+using HotelManagement.WebAPI.Profiles;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -33,13 +38,19 @@ namespace HotelManagement.WebAPI
             });
             //automapper
             services.AddAutoMapper(typeof(Startup));
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new RoomProfile());
+                mc.AddProfile(new ReviewProfile());
+                mc.AddProfile(new BookingProfile());
+            });
 
             //dbcontext and sqlserver
 
 
-            services.AddDbContext<HotelDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Default")));
-
-
+         //   services.AddDbContext<HotelDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Default")));
+              services.AddDbContext<HotelDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")), ServiceLifetime.Scoped);
+            services.AddScoped<HotelDbContext>();
 
             //register queries and handlers
             services.AddMediatR(typeof(GetAllRoomsHandler));

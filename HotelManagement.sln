@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelManagement.Application
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelManagement.WebAPI", "HotelManagement.WebAPI\HotelManagement.WebAPI.csproj", "{D2D80186-CDE7-485C-B4FB-64971FD3C217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandling", "ExceptionHandling\ExceptionHandling.csproj", "{A3B50E88-2278-447F-94E0-25FC9B1A38BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionHandling", "ExceptionHandling\ExceptionHandling.csproj", "{A3B50E88-2278-447F-94E0-25FC9B1A38BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -52,6 +52,7 @@ const AddBooking = (props) => {
                         <div className="col-md-12">
                            <button className="send_btn">Book</button>
                         </div>
+                        
                      </div>
                   </form>
                </div>

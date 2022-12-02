@@ -11,7 +11,7 @@ namespace HotelManagement.Domain.Entities
         public bool Available { get; set; }
         public string Description { get; set; }
         public int MaximumGuests { get; set; }
-        public IEnumerable<Review> Reviews { get; set; }
-        public IEnumerable<Booking> Bookings { get; set; }
+        public  IEnumerable<Review> Reviews { get; set; }
+        public  IEnumerable<Booking> Bookings { get; set; }
     }
 }
