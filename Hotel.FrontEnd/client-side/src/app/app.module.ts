@@ -46,7 +46,10 @@ import { EditBookingComponent } from './modules/bookings/pages/edit-booking/edit
     RouterModule.forRoot([
       {path: 'rooms', component:AllRoomsComponent, pathMatch:'full'},
       {path: 'rooms/create', component: CreateRoomComponent, pathMatch:'full'},
-      {path: 'rooms/:id/edit', component:EditRoomComponent, pathMatch:'full'}
+      {path: 'rooms/:id/edit', component:EditRoomComponent, pathMatch:'full'},
+      {path: 'rooms/:roomId/bookings', component: AllBookingsComponent, pathMatch:'full'},
+      {path: 'rooms/:roomId/bookings/create', component: CreateBookingComponent},
+      {path: 'rooms/:roomId/bookings/:id/edit', component: EditBookingComponent}
     ]),
     BrowserAnimationsModule
   ],

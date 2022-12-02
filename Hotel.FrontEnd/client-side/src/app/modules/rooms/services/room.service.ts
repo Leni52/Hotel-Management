@@ -9,28 +9,31 @@ import { RoomResponseModel } from '../models/RoomResponseModel';
 })
 export class RoomService {
  
-
-  constructor(private backendService:BackendService) { }
+ private backendApiUrl;
+  constructor(private backendService:BackendService) {
+    this.backendApiUrl = 'https://localhost:5001/api/';
+   }
 
   getAllRooms():Observable<RoomResponseModel[]>{
-    return this.backendService.GETRequest('Room');
+    return this.backendService.GETRequest(this.backendApiUrl + 'Room');
   }
 
   getRoom(id:string): Observable<RoomResponseModel>{
-    return this.backendService.GETRequest('Room/'+id);
+    return this.backendService.GETRequest(this.backendApiUrl + 'Room/' + id);
 
   }
 
   deleteRoom(id:string):Observable<void>{
-    return this.backendService.DELETERequest('Room/'+id);
+    return this.backendService.DELETERequest(this.backendApiUrl + 'Room/' + id);
   }
 
   createRoom(roomModel: RoomRequestModel) : Observable<RoomRequestModel>{
-    return this.backendService.POSTRequest('Room', roomModel);
+    console.log("room model:" , roomModel)
+    return this.backendService.POSTRequest(this.backendApiUrl + 'Room', roomModel);
   }
 
   updateRoom(id:string, roomModel:RoomRequestModel):Observable<RoomRequestModel>{
-    return this.backendService.PUTRequest('Room/'+id, roomModel);
+    return this.backendService.PUTRequest(this.backendApiUrl + 'Room/' + id, roomModel);
   }
 
 }

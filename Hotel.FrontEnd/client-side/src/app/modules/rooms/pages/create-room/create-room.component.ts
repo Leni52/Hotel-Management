@@ -32,6 +32,7 @@ maximumGuests:1
 
 onSubmit(form:NgForm):void{
   if(form.valid){
+ //   console.log(this.roomToSubmit);
     this.roomService.createRoom(this.roomToSubmit).subscribe(res=>{
       this.router.navigateByUrl('/rooms');
     });

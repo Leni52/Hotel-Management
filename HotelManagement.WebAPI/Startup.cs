@@ -7,9 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MediatR;
-
 using static HotelManagement.Application.Features.Rooms.Queries.GetAllRooms;
 using ExceptionHandling.Handler;
+using static HotelManagement.Application.Features.Rooms.Commands.CreateRoom;
 
 namespace HotelManagement.WebAPI
 {
@@ -43,7 +43,7 @@ namespace HotelManagement.WebAPI
 
             //register queries and handlers
             services.AddMediatR(typeof(GetAllRoomsHandler));
-
+            services.AddMediatR(typeof(CreateRoomHandler));
             //add CORS
             services.AddCors((setup) =>
             {
@@ -64,8 +64,9 @@ namespace HotelManagement.WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelManagement.WebAPI v1"));
             }
-            app.UseExceptionHandler(new ExceptionHandlerConfig().CustomOptions);
             app.UseCors("default");
+            app.UseExceptionHandler(new ExceptionHandlerConfig().CustomOptions);
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();

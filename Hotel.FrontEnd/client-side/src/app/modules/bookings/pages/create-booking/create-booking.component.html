@@ -1,1 +1,42 @@
-<p>create-booking works!</p>
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col">
+            <h3>Create Booking</h3>
+        </div>
+
+        <div class="col text-right">
+            <a routerLink="/rooms" class="btn btn-secondary btn-sm">Back to rooms list</a>
+                </div>
+
+    </div>
+
+    <br />
+
+    <form [formGroup]="createForm"  (ngSubmit)="onSubmit(createForm)">
+ 
+            <input formControlName="roomId" name="roomId" type="hidden" id="id" class="form-control"
+               >
+    
+       
+            <label for="otherRequests">Other Requests</label>
+            <input name="otherRequests" id="otherRequests" type="text" class="form-control" />
+       
+
+            <label for="numberOfGuests">Number of guests</label>
+            <input name="numberOfGuests" id="numberOfGuests" type="number" class="form-control"
+              />     
+       
+            <label for="checkIn">Check In</label>
+            <input name="checkIn" id="checkIn" type="datetime-local" class="form-control" 
+                >
+       
+            <label for="checkOut">Check Out</label>
+            <input name="checkOut" id="checkOut" type="datetime-local" class="form-control" 
+                >
+     
+        <button class="btn btn-primary" type="submit">Create</button>
+
+    </form>
+
+</div>

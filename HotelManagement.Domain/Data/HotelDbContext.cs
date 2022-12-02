@@ -25,5 +25,6 @@ namespace HotelManagement.Domain.Data
 
             base.OnConfiguring(optionsBuilder);
         }
+        
     }
 }
