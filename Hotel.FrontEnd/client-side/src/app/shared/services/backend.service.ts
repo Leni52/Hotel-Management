@@ -14,40 +14,40 @@ export class BackendService {
 
     GETRequest(requestTarget: string, responseType: any = 'json'): Observable<any> {
         return this.http.get(
-            requestTarget, {
+            environment.backendApiUrl + requestTarget,
+            { 
                 observe: 'body',
                 responseType: responseType
-            }        
+            }
         );
     }
-
     POSTRequest(requestTarget: string, requestData: any, responseType: any = 'json'): Observable<any> {
         return this.http.post(
-            requestTarget, {
-                observe: 'body',
-                responseType: responseType,
-                requestData:requestData
-            }  
+            environment.backendApiUrl + requestTarget, requestData,
+            {
+                observe: 'response',
+                responseType: responseType
+            }
         );
     }
 
     PUTRequest(requestTarget: string, requestData: any, responseType: any = 'json'): Observable<any> {
           return this.http.put(
-            requestTarget, {
-                observe: 'body',
-                responseType: responseType,
-                requestData:requestData
-            }  
+            environment.backendApiUrl + requestTarget, requestData,
+            {
+                observe: 'response',
+                responseType: responseType
+            }
         );
     }
 
     DELETERequest(requestTarget: string, responseType: any = 'json'): Observable<any> {
         return this.http.delete(
-            requestTarget, {
-                observe: 'body',
+            environment.backendApiUrl + requestTarget,
+            {
+                observe: 'response',
                 responseType: responseType
-            }  
+            }
         );
-
-  }
+    }
 }

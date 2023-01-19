@@ -14,7 +14,7 @@ export class EditRoomComponent implements OnInit {
 id!:string;
 room!: RoomResponseModel;
 roomModels: RoomResponseModel[]=[];
-editForm!:FormGroup;
+editForm:FormGroup;
 result!:string;
   
 
@@ -28,6 +28,7 @@ result!:string;
         number:['', Validators.required],
         roomType:[''],
         price:[''],
+        available:[''],        
         description: ['', Validators.required],
         maximumGuests: ['', Validators.required]
       });
@@ -42,33 +43,11 @@ result!:string;
   
       this.roomService
         .getRoom(this.id)
-        .subscribe((data => {
-          if(data){
-            this.room = data;
-            console.log(data);
-          
-              //this.editForm.controls['price'].setValue(this.room.price);
-
-              this.editForm.setValue({
-                id: this.room.id,
-                number: this.room.number,
-                roomType : this.room.roomType,
-                price: this.room.price,
-                description : this.room.description,
-                maximumGuests: this.room.maximumGuests,
-               
-               available : this.room.available,
-
-
-              })
-
-
-
-          }
-        }))
-     }
-      
-    
+        .subscribe((data: RoomResponseModel) => {
+          this.room = data;
+          this.editForm.patchValue(data);
+        });
+    }
   
     onSubmit(formData: { value: RoomResponseModel }) {
       this.confirmationService
@@ -80,12 +59,16 @@ result!:string;
         })
         .subscribe((result) => {
           if (result === true) {
+            console.log(this.editForm.value);
             this.roomService
+            
               .updateRoom(this.id, this.editForm.value)
-              .subscribe((res: any) => {
+              .subscribe((res) => {
                 this.router.navigateByUrl('/rooms');
+                
               });
           }
         });
     }
-}
+  }
+  

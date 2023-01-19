@@ -1,55 +1,64 @@
-
 <div class="container">
-    <br />
-  
-    <div class="row">
-      <div class="col">
-        <h3>Update Room</h3>
-      </div>
-      <div class="col text-right">
-        <a routerLink="/rooms" class="btn btn-secondary btn-sm">Back To Rooms List</a>
-      </div>
+  <br />
+
+  <div class="row">
+    <div class="col">
+      <h3>Update Room</h3>
     </div>
-    <br />
-  
-    <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm)">
-         
-         <div class="form-group">
-                <input formControlName="id" id="id" type="hidden"/>
-         </div>     
-                   
-      <div class="form-group">
-        <label for="roomType">Room Type:</label>
-        <select class="form-control"  type="number" 
-                name="roomType" id="roomType"  >
-          <option [ngValue]="1">Economic</option>
-          <option [ngValue]="2">Luxury</option>
-         
-        </select>   
-      </div>
-      
-      <div class="form-group">
-        <label for="Price">Price:</label>
-        <input name="price" id="price" type="number"
-                class="form-control"/>  
-      </div>
-
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <input name="description" id="description" type="text"
-                class="form-control"/>  
-      </div> 
-      
-      <div class="form-group">
-        <label for="maximumGuests">Maximum guests</label>
-        <input name="maximumGuests" id="maximumGuests" type="number"
-                class="form-control"/>  
-      </div>
-
-          
-          
-     <button mat-raised-button type="submit" class="btn btn-warning btn-sm" [disabled]="!editForm.valid">
-        Update
-      </button>
-    </form>
+    <div class="col text-right">
+      <a routerLink="/rooms" class="btn btn-secondary btn-sm">Back To Rooms List</a>
+    </div>
   </div>
+  <br />
+
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm)">
+
+    <div class="form-group">
+      <input formControlName="id" id="id" type="hidden" />
+    </div>
+
+    <div class="form-group">
+      <label for="number">Number:</label>
+      <input formControlName="number" id="number" type="number" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="roomType">Room Type:</label>
+      <select class="form-control" type="number" formControlName="roomType" id="roomType">
+        <option [ngValue]="1">Economic</option>
+        <option [ngValue]="2">Luxury</option>
+
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="available">Available</label>
+      <select class="form-control" type="boolean" formControlName="available" id="available">
+        <option [ngValue]="true">Yes</option>
+        <option [ngValue]="false">No</option>
+
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="Price">Price:</label>
+      <input formControlName="price" id="price" type="number" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input formControlName="description" id="description" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="maximumGuests">Maximum guests</label>
+      <input formControlName="maximumGuests" id="maximumGuests" type="number" class="form-control" />
+    </div>
+
+
+
+    <button mat-raised-button type="submit" class="btn btn-warning btn-sm">
+      Update
+    </button>
+  </form>
+</div>

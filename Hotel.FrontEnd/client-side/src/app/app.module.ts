@@ -18,7 +18,8 @@ import { ConfirmationComponent } from './shared/pages/confirmation/confirmation.
 import { ReactiveFormsModule } from '@angular/forms';
 import { AllBookingsComponent } from './modules/bookings/pages/all-bookings/all-bookings.component';
 import { CreateBookingComponent } from './modules/bookings/pages/create-booking/create-booking.component';
-import { EditBookingComponent } from './modules/bookings/pages/edit-booking/edit-booking.component'; 
+import { EditBookingComponent } from './modules/bookings/pages/edit-booking/edit-booking.component';
+import { NavigationBarComponent } from './shared/pages/navigation-bar/navigation-bar.component'; 
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EditBookingComponent } from './modules/bookings/pages/edit-booking/edit
     ConfirmationComponent,
     AllBookingsComponent,
     CreateBookingComponent,
-    EditBookingComponent
+    EditBookingComponent,
+    NavigationBarComponent
   ],
   imports: [
     FormsModule,
