@@ -45,7 +45,7 @@ namespace HotelManagement.WebAPI
 
             //dbcontext and sqlserver
 
-        
+
             services.AddDbContext<HotelDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")), ServiceLifetime.Scoped);
             services.AddScoped<HotelDbContext>();
 
@@ -74,7 +74,7 @@ namespace HotelManagement.WebAPI
             }
             app.UseCors("default");
             app.UseExceptionHandler(new ExceptionHandlerConfig().CustomOptions);
-            
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
