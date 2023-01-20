@@ -2,6 +2,7 @@
 using HotelManagement.Application.DTO.Bookings.Request;
 using HotelManagement.Application.Features.Bookings.Commands;
 using HotelManagement.Application.Features.Bookings.Queries;
+using HotelManagement.Application.Features.Rooms.Commands;
 using HotelManagement.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -70,11 +71,11 @@ namespace HotelManagement.WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("{roomId}/delete/{bookingId}")]
+        [HttpDelete("{bookingId}")]
         [ProducesResponseType(204)]
-        public async Task<ActionResult> DeleteBooking(Guid bookingId,Guid roomId)
+        public async Task<ActionResult> DeleteBooking(Guid bookingId)
         {
-            var command = new DeleteBookingById(bookingId, roomId);
+            var command = new DeleteBookingById(bookingId);
             await _mediator.Send(command);
             return NoContent();
         }

@@ -15,24 +15,23 @@
 
     <form [formGroup]="createForm"  (ngSubmit)="onSubmit(createForm)">
  
-            <input formControlName="roomId" name="roomId" type="hidden" id="id" class="form-control"
-               >
+            <input formControlName="roomId" name="roomId" type="hidden" id="id" class="form-control"/>               >
     
        
             <label for="otherRequests">Other Requests</label>
-            <input name="otherRequests" id="otherRequests" type="text" class="form-control" />
+            <input formControlName="otherRequests" name="otherRequests" id="otherRequests" type="text" class="form-control" />
        
 
             <label for="numberOfGuests">Number of guests</label>
-            <input name="numberOfGuests" id="numberOfGuests" type="number" class="form-control"
+            <input formControlName="numberOfGuests" name="numberOfGuests" id="numberOfGuests" type="number" class="form-control"
               />     
        
             <label for="checkIn">Check In</label>
-            <input name="checkIn" id="checkIn" type="datetime-local" class="form-control" 
+            <input formControlName="checkIn" name="checkIn" id="checkIn" type="datetime-local" class="form-control" 
                 >
        
             <label for="checkOut">Check Out</label>
-            <input name="checkOut" id="checkOut" type="datetime-local" class="form-control" 
+            <input formControlName="checkOut" name="checkOut" id="checkOut" type="datetime-local" class="form-control" 
                 >
      
         <button class="btn btn-primary" type="submit">Create</button>

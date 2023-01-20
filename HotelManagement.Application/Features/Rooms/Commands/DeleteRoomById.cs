@@ -33,8 +33,6 @@ namespace HotelManagement.Application.Features.Rooms.Commands
                 _context.Rooms.Remove(room);
                 await _context.SaveChangesAsync();
                 return room.Id;
-
-
             }
         }
     }

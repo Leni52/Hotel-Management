@@ -11,12 +11,6 @@ import { BookingService } from '../../services/booking.service';
   styleUrls: ['./create-booking.component.css']
 })
 
-
-
-
-
-
-
 export class CreateBookingComponent implements OnInit {
 
   createForm: FormGroup;
@@ -40,7 +34,7 @@ export class CreateBookingComponent implements OnInit {
       roomId: [this.route.snapshot.params['roomId']],
        checkIn: new Date(),
        checkOut: new Date(),
-       numberOfGuests: 1,
+       numberOfGuests: [''],
        otherRequests: ['']
      
     });

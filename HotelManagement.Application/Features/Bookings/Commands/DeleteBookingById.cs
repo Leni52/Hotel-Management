@@ -1,5 +1,6 @@
 ﻿using ExceptionHandling.Exceptions;
 using HotelManagement.Domain.Data;
+using HotelManagement.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,10 +16,9 @@ namespace HotelManagement.Application.Features.Bookings.Commands
     {
         public Guid BookingId { get; set; }
         public Guid RoomId { get; set; }
-        public DeleteBookingById(Guid bookingId, Guid roomId)
+        public DeleteBookingById(Guid bookingId)
         {
             BookingId = bookingId;
-            RoomId = roomId;
         }
         public class DeleteBookingByIdHandler : IRequestHandler<DeleteBookingById, Guid>
         {
@@ -29,14 +29,7 @@ namespace HotelManagement.Application.Features.Bookings.Commands
             }
             public async Task<Guid> Handle(DeleteBookingById request, CancellationToken cancellationToken)
             {
-                var room = await _context.Rooms
-                    .Include(r => r.Bookings)
-                    .FirstOrDefaultAsync(r => r.Id == request.RoomId);
-                if (room == null)
-                {
-                    throw new ItemDoesNotExistException();
-                }
-                var booking =  room.Bookings.FirstOrDefault(b => b.Id == request.BookingId);
+                var booking = await _context.Bookings.Where(booking => booking.Id == request.BookingId).FirstOrDefaultAsync();
                 if (booking == null)
                 {
                     throw new ItemDoesNotExistException();

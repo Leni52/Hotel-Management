@@ -11,8 +11,8 @@ import { BookingService } from '../../services/booking.service';
   styleUrls: ['./edit-booking.component.css']
 })
 export class EditBookingComponent implements OnInit {
-
   id!:string;
+  roomId!: string;
 booking!: BookingResponseModel;
 bookingModels: BookingResponseModel[]=[];
 editForm!:FormGroup;
@@ -27,8 +27,10 @@ result!:string;
     private confirmationService: ConfirmationService) {
       this.editForm = this.formBuilder.group({
         id:[''],
+        roomId:[''],
         checkIn:['', Validators.required],
-        checkOut:[''],
+        checkOut:['', Validators.required],
+        totalFee:[''],
         numberOfGuests:[''],
         otherRequests: ['', Validators.required]       
       });
@@ -36,8 +38,8 @@ result!:string;
 
      ngOnInit(): void {
       this.id = this.route.snapshot.params['id'];
-  //this.roomId = this.route.snapshot.params['roomId'];
-      this.bookingService.getAllBookingsForRoom(this.id).subscribe((data: BookingResponseModel[]) => {
+  this.roomId = this.route.snapshot.params['roomId'];
+      this.bookingService.getAllBookingsForRoom(this.roomId).subscribe((data: BookingResponseModel[]) => {
         this.bookingModels = data;
       });
   
@@ -46,6 +48,7 @@ result!:string;
         .subscribe((data: BookingResponseModel) => {
           this.booking = data;
           this.editForm.patchValue(data);
+          console.log("!!!", data);
         });
     }
   

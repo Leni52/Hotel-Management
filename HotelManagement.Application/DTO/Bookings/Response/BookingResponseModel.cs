@@ -8,7 +8,6 @@ namespace HotelManagement.Application.DTO.Booking.Response
 {
     public class BookingResponseModel
     {
-        public int RoomNumber { get; set; }
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
         public int NumberOfGuests { get; set; }

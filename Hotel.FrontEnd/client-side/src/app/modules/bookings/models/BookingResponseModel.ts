@@ -1,6 +1,6 @@
 export interface BookingResponseModel {
   id:string;
-  roomNumber: number;
+  roomId: string;
   checkIn: Date;
   checkOut: Date;
   numberOfGuests: number;

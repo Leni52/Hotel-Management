@@ -7,7 +7,7 @@
         <h3>Update Booking</h3>
       </div>
       <div class="col text-right">
-        <a routerLink="'/rooms/'+ room.id+ '/bookings'" class="btn btn-secondary btn-sm">Back To Bookings List</a>
+        <a [routerLink]="'/rooms/'+ this.roomId+ '/bookings'" class="btn btn-secondary btn-sm">Back To Bookings List</a>
       </div>
     </div>
     <br />
@@ -16,19 +16,20 @@
          
          <div class="form-group">
                 <input formControlName="id" id="id" type="hidden"/>
-         </div>     
-                   
-     
+         </div>                      
+         <div class="form-group">
+          <input formControlName="roomId" id="roomId" type="hidden"/>
+   </div>   
       
       <div class="form-group">
         <label for="checkIn">Check In</label>
-        <input name="checkIn" id="checkIn" type="datetime-local"
+        <input formControlName="checkIn" name="checkIn" id="checkIn" type="datetime-local"
                 class="form-control" required />  
       </div>
 
       <div class="form-group">
         <label for="checkOut">Check Out</label>
-        <input name="checkOut" id="checkOut" type="datetime-local"
+        <input formControlName="checkOut" name="checkOut" id="checkOut" type="datetime-local"
                 class="form-control" required />  
       </div>
 
@@ -36,17 +37,22 @@
       
       <div class="form-group">
         <label for="numberOfGuests">Number of guests</label>
-        <input name="numberOfGuests" id="numberOfGuests" type="number"
+        <input formControlName="numberOfGuests" name="numberOfGuests" id="numberOfGuests" type="number"
                 class="form-control" required />  
       </div>
       
       <div class="form-group">
         <label for="otherRequests">Other requests:</label>
-        <input name="otherRequests" id="otherRequests" type="text"
+        <input formControlName="otherRequests" name="otherRequests" id="otherRequests" type="text"
                 class="form-control" required />  
       </div> 
           
-          
+      <div class="form-group">
+        <label for="totalFee">Fee</label>
+        <input formControlName="totalFee" name="totalFee" id="totalFee" type="number"
+                class="form-control" required />  
+      </div> 
+
      <button mat-raised-button type="submit" class="btn btn-warning btn-sm" [disabled]="!editForm.valid">
         Update
       </button>

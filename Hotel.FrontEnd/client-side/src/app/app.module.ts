@@ -19,7 +19,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AllBookingsComponent } from './modules/bookings/pages/all-bookings/all-bookings.component';
 import { CreateBookingComponent } from './modules/bookings/pages/create-booking/create-booking.component';
 import { EditBookingComponent } from './modules/bookings/pages/edit-booking/edit-booking.component';
-import { NavigationBarComponent } from './shared/pages/navigation-bar/navigation-bar.component'; 
+import { NavigationBarComponent } from './shared/pages/navigation-bar/navigation-bar.component';
+import { AllReviewsComponent } from './modules/reviews/pages/all-reviews/all-reviews.component';
+import { EditReviewComponent } from './modules/reviews/pages/edit-review/edit-review.component';
+import { CreateReviewComponent } from './modules/reviews/pages/create-review/create-review.component'; 
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { NavigationBarComponent } from './shared/pages/navigation-bar/navigation
     AllBookingsComponent,
     CreateBookingComponent,
     EditBookingComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    AllReviewsComponent,
+    EditReviewComponent,
+    CreateReviewComponent
   ],
   imports: [
     FormsModule,

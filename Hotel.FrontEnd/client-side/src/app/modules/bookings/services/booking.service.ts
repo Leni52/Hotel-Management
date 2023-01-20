@@ -7,37 +7,35 @@ import { BookingResponseModel } from '../models/BookingResponseModel';
 @Injectable({
   providedIn: 'root'
 })
-export class BookingService {
-  private backendApiUrl;
-  constructor(private backendService: BackendService) { 
-    this.backendApiUrl = 'https://localhost:5001/api/';
+export class BookingService {  
+  constructor(private backendService: BackendService) {    
   }
 
 
  getAllBookingsForRoom(roomId:string): Observable<BookingResponseModel[]>{
    console.log(roomId);
-  return this.backendService.GETRequest( this.backendApiUrl + 'Booking/booking/'+roomId);
+  return this.backendService.GETRequest('Booking/booking/'+roomId);
  }
 
  updateBooking(
   id:string,
   request: BookingRequestModel)
   :Observable<BookingRequestModel>{
-    return this.backendService.PUTRequest(this.backendApiUrl + 'Booking/'+id, request);
+    return this.backendService.PUTRequest('Booking/'+id, request);
 
   }
  
   createBooking(request: BookingRequestModel):Observable<BookingRequestModel>{
     console.log(request);
-    return this.backendService.POSTRequest(this.backendApiUrl + 'Booking', request);
+    return this.backendService.POSTRequest('Booking', request);
   }
 
-  deleteBooking(bookingId:string, roomId:string): Observable<void>{
-    return this.backendService.DELETERequest(this.backendApiUrl + 'Booking/'+ roomId + '/delete/' + bookingId);
+  deleteBooking(id:string): Observable<void>{
+    return this.backendService.DELETERequest('Booking/'+ id);
   }
 
   getBookingById(id:string):Observable<BookingResponseModel>{
-    return this.backendService.GETRequest(this.backendApiUrl + 'Booking/' +id);
+    return this.backendService.GETRequest('Booking/' +id);
   }
 
 
