@@ -1,10 +1,7 @@
 import { Link } from 'react-router-dom';
 import About from '../components/About';
-import { useKeycloak } from "@react-keycloak/web";
 
-const Header = () => {
-
-   const [keycloak, initialized] = useKeycloak([]);
+const Header = () => {   
 
    return (
       <header>
@@ -42,15 +39,7 @@ const Header = () => {
                               <li className="nav-item">
                                  <Link className="nav-link" to="/contact">Contact Us</Link>
                               </li>
-                              <li>
-
-                                 {initialized ?
-                                    keycloak.authenticated && <pre >{JSON.stringify(keycloak, undefined, 2)}</pre>
-                                    : <h2>keycloak initializing ....!!!!</h2>
-                                 }
-
-
-                              </li>
+                             
                            </ul>
                         </div>
                      </nav>
