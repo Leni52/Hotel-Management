@@ -14,9 +14,11 @@ namespace HotelManagement.Application.Features.Bookings.Commands
     public class DeleteBookingById : IRequest<Guid>
     {
         public Guid BookingId { get; set; }
-        public DeleteBookingById(Guid bookingId)
+        public Guid RoomId { get; set; }
+        public DeleteBookingById(Guid bookingId, Guid roomId)
         {
             BookingId = bookingId;
+            RoomId = roomId;
         }
         public class DeleteBookingByIdHandler : IRequestHandler<DeleteBookingById, Guid>
         {
@@ -27,7 +29,14 @@ namespace HotelManagement.Application.Features.Bookings.Commands
             }
             public async Task<Guid> Handle(DeleteBookingById request, CancellationToken cancellationToken)
             {
-                var booking = await _context.Bookings.Where(booking => booking.Id == request.BookingId).FirstOrDefaultAsync();
+                var room = await _context.Rooms
+                    .Include(r => r.Bookings)
+                    .FirstOrDefaultAsync(r => r.Id == request.RoomId);
+                if (room == null)
+                {
+                    throw new ItemDoesNotExistException();
+                }
+                var booking =  room.Bookings.FirstOrDefault(b => b.Id == request.BookingId);
                 if (booking == null)
                 {
                     throw new ItemDoesNotExistException();
@@ -35,8 +44,6 @@ namespace HotelManagement.Application.Features.Bookings.Commands
                 _context.Bookings.Remove(booking);
                 await _context.SaveChangesAsync();
                 return booking.Id;
-
-
             }
         }
     }

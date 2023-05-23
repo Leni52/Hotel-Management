@@ -2,7 +2,7 @@
 
 namespace HotelManagement.Domain.Migrations
 {
-    public partial class Fourth : Migration
+    public partial class Second : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

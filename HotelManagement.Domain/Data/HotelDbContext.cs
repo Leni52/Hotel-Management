@@ -30,5 +30,6 @@ namespace HotelManagement.Domain.Data
         {
             base.OnModelCreating(builder);
         }
+        
     }
 }

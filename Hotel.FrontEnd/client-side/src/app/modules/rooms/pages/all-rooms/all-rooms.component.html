@@ -17,14 +17,16 @@
   
         <mat-card>
           <mat-card-header>{{roomTypes[room.roomType]}}</mat-card-header>
-          <mat-card-title>{{room.available }} </mat-card-title>
+          <mat-card-title>{{room.available}} </mat-card-title>
   
           
           <mat-card-content>{{room.description}}</mat-card-content>
           <mat-card-content>{{room.price}}</mat-card-content>
           <mat-card-actions>
          <a [routerLink]="['/rooms/'+ room.id+'/edit']">Update room</a>
-         <a [routerLink]="['/booking/booking/'+ room.id]"> View all bookings</a>
+ 
+          
+         <a [routerLink]="['/rooms/'+ room.id + '/bookings']" class="btn btn-primary btn-sm"> View all bookings</a>
           <a [routerLink]="['/rooms/'+ room.id+ '/reviews']"> View reviews</a>  
          
           <button mat-raised-button type="button" (click)="openDialog(room.id)" class="btn btn-danger btn-sm">

@@ -14,7 +14,7 @@
     <br />
     <table class="table table-bordered table-sm">
       <tr>
-        <th>Id</th>
+    <th>Id</th>
         <th>Check In</th>
         <th>Check Out</th>
         <th>Number of Guests</th>
@@ -25,13 +25,14 @@
       </tr>
       <input id="roomId" type="hidden" />
       <tr *ngFor="let booking of allBookingsFromRoom">
+        <td>{{booking.id}}</td>
         <td>{{ booking.checkIn }}</td>
         <td>{{ booking.checkOut }}</td>
         <td>{{ booking.numberOfGuests }}</td>
         <td>{{ booking.totalFee}}</td>
         <td>{{ booking.otherRequests}}</td>
         <td class="text-right">
-          <a [routerLink]="['/bookings/' + booking.id + '/edit']"
+          <a [routerLink]="['/rooms/' + roomId +  '/bookings/' + booking.id + '/edit']"
             class="btn btn-primary btn-sm">Edit the booking</a>
           <button mat-raised-button type="button" (click)="openDialog(booking.id)" class="btn btn-danger btn-sm">
             Delete booking

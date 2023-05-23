@@ -36,6 +36,7 @@ namespace HotelManagement.Domain.Migrations
                     CheckOut = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NumberOfGuests = table.Column<int>(type: "int", nullable: false),
                     TotalFee = table.Column<float>(type: "real", nullable: false),
+                    OtherRequests = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },

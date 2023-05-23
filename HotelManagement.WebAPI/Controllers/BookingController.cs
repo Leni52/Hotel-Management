@@ -70,11 +70,11 @@ namespace HotelManagement.WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("{bookingId}")]
+        [HttpDelete("{roomId}/delete/{bookingId}")]
         [ProducesResponseType(204)]
-        public async Task<ActionResult> DeleteBooking(Guid bookingId)
+        public async Task<ActionResult> DeleteBooking(Guid bookingId,Guid roomId)
         {
-            var command = new DeleteBookingById(bookingId);
+            var command = new DeleteBookingById(bookingId, roomId);
             await _mediator.Send(command);
             return NoContent();
         }

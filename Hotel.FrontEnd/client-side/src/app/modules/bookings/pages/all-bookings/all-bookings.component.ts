@@ -12,7 +12,7 @@ import { BookingService } from '../../services/booking.service';
 export class AllBookingsComponent implements OnInit {
 allBookingsFromRoom: BookingResponseModel[] =[];
   roomId!: string;
-
+  bookingId!: string;
   constructor(
     public bookingService: BookingService,
     private route: ActivatedRoute,
@@ -22,29 +22,35 @@ allBookingsFromRoom: BookingResponseModel[] =[];
 
   ngOnInit(): void {
 this.roomId = this.route.snapshot.params['roomId'];
+this.bookingId = this.route.snapshot.params['bookingId'];
 
 this.bookingService
 .getAllBookingsForRoom(this.roomId)
 .subscribe((data: BookingResponseModel[])=>{
   this.allBookingsFromRoom= data;
+  console.log(data);
+  console.log("roomId", this.roomId);
+  console.log("bookingId", this.bookingId);
 });
    
   }
 
-  openDialog(id: string) {
+  openDialog(bookingId: string) {
     this.confirmationService
       .confirmDialog({
         title: 'Please confirm action',
-        message: 'Are you sure you want to delete the comment?',
+        message: 'Are you sure you want to delete the booking?',
         confirmText: 'Yes',
         cancelText: 'No',
       })
-      .subscribe((result: boolean) => {
+      .subscribe((result: boolean) => {     
         if (result === true) {
-          this.bookingService.deleteBooking(id).subscribe((res) => {
+          this.bookingService.deleteBooking(bookingId, this.roomId).subscribe((res) => {
             this.allBookingsFromRoom = this.allBookingsFromRoom.filter(
-              (item) => item.id !== id
+              (item) => item.id !== bookingId
+            
             );
+            
           });
         }
       });

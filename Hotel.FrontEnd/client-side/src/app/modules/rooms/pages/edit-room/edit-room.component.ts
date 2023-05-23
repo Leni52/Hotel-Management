@@ -42,11 +42,33 @@ result!:string;
   
       this.roomService
         .getRoom(this.id)
-        .subscribe((data: RoomResponseModel) => {
-          this.room = data;
-          this.editForm.patchValue(data);
-        });
-    }
+        .subscribe((data => {
+          if(data){
+            this.room = data;
+            console.log(data);
+          
+              //this.editForm.controls['price'].setValue(this.room.price);
+
+              this.editForm.setValue({
+                id: this.room.id,
+                number: this.room.number,
+                roomType : this.room.roomType,
+                price: this.room.price,
+                description : this.room.description,
+                maximumGuests: this.room.maximumGuests,
+               
+               available : this.room.available,
+
+
+              })
+
+
+
+          }
+        }))
+     }
+      
+    
   
     onSubmit(formData: { value: RoomResponseModel }) {
       this.confirmationService

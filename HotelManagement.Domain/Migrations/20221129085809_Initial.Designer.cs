@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelManagement.Domain.Migrations
 {
     [DbContext(typeof(HotelDbContext))]
-    [Migration("20220811063613_Initial")]
+    [Migration("20221129085809_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,6 +41,10 @@ namespace HotelManagement.Domain.Migrations
 
                     b.Property<int>("NumberOfGuests")
                         .HasColumnType("int");
+
+                    b.Property<string>("OtherRequests")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<Guid>("RoomId")
                         .HasColumnType("uniqueidentifier");
@@ -122,7 +126,7 @@ namespace HotelManagement.Domain.Migrations
             modelBuilder.Entity("HotelManagement.Domain.Entities.Booking", b =>
                 {
                     b.HasOne("HotelManagement.Domain.Entities.Room", "Room")
-                        .WithMany()
+                        .WithMany("Bookings")
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -143,6 +147,8 @@ namespace HotelManagement.Domain.Migrations
 
             modelBuilder.Entity("HotelManagement.Domain.Entities.Room", b =>
                 {
+                    b.Navigation("Bookings");
+
                     b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
