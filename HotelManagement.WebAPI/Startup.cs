@@ -45,8 +45,9 @@ namespace HotelManagement.WebAPI
 
             //dbcontext and sqlserver
 
-        
-            services.AddDbContext<HotelDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")), ServiceLifetime.Scoped);
+
+         //   services.AddDbContext<HotelDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Default")));
+              services.AddDbContext<HotelDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")), ServiceLifetime.Scoped);
             services.AddScoped<HotelDbContext>();
 
             //register queries and handlers

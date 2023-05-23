@@ -30,10 +30,10 @@ namespace HotelManagement.Application.Features.Rooms.Commands
         }
         public class CreateRoomHandler : IRequestHandler<CreateRoom, RoomRequestModel>
         {
-            private readonly HotelDbContext _context;
+            private readonly IHotelDbContext _context;
             private readonly IMapper _mapper;
 
-            public CreateRoomHandler(HotelDbContext context, IMapper mapper)
+            public CreateRoomHandler(IHotelDbContext context, IMapper mapper)
             {
                 _context = context;
                 _mapper = mapper;
@@ -53,9 +53,9 @@ namespace HotelManagement.Application.Features.Rooms.Commands
 
                 };
                 await _context.Rooms.AddAsync(room);
-                await _context.SaveChangesAsync();               
+                await _context.SaveChangesAsync();
                 var roomResponse = _mapper.Map<RoomRequestModel>(room);
-               return roomResponse;
+                return roomResponse;
             }
 
         }
